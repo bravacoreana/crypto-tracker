@@ -1,25 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Router from "./Router";
+import { ThemeProvider } from "styled-components";
+import { ReactQueryDevtools } from "react-query/devtools";
+import { darkTheme, lightTheme } from "./style/theme";
+import { GlobalStyle } from "./style/globalStyle";
+import { useState } from "react";
 
 function App() {
+  const [isDark, setIsDark] = useState(true);
+  const toggleDark = () => setIsDark((current) => !current);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+      <GlobalStyle />
+      <Router toggleDark={toggleDark} isDark={isDark} />
+      <ReactQueryDevtools initialIsOpen={true} />
+    </ThemeProvider>
   );
 }
 
