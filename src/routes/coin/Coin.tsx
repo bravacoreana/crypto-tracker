@@ -108,8 +108,14 @@ export default function Coin({ isDark, toggleDark }: IThemeProps) {
             </Tab>
           </Tabs>
           <Routes>
-            <Route path="price" element={<Price id={id} />} />
-            <Route path="chart" element={<Chart id={id} isDark={isDark} />} />
+            <Route
+              path={`${process.env.PUBLIC_URL}/:id/price`}
+              element={<Price id={id} />}
+            />
+            <Route
+              path={`${process.env.PUBLIC_URL}/:id/chart`}
+              element={<Chart id={id} isDark={isDark} />}
+            />
           </Routes>
         </>
       )}

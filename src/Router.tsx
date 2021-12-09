@@ -12,11 +12,11 @@ export default function Router({ toggleDark, isDark }: IRouterProps) {
     <BrowserRouter>
       <Routes>
         <Route
-          path="/:id/*"
+          path={`${process.env.PUBLIC_URL}/:id/*`}
           element={<Coin isDark={isDark} toggleDark={toggleDark} />}
         />
         <Route
-          path="/"
+          path={`${process.env.PUBLIC_URL}/`}
           element={<Coins toggleDark={toggleDark} isDark={isDark} />}
         />
       </Routes>
